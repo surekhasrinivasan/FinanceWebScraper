@@ -8,7 +8,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using FinanceWebScraper.Data;
 using FinanceWebScraper.Models;
 using FinanceWebScraper.Services;
 
@@ -26,11 +25,11 @@ namespace FinanceWebScraper
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            //services.AddDbContext<FinanceWebScraperContext>(options =>
+            //    options.UseSqlServer(Configuration.GetConnectionString("FinanceWebScraperContext")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddEntityFrameworkStores<FinanceWebScraperContext>()
                 .AddDefaultTokenProviders();
 
             // Add application services.
